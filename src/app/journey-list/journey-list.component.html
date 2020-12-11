@@ -1,0 +1,79 @@
+<div class="panel panel-default">  
+   
+    
+      
+  <div class="panel-body">  
+      <table  class="table table-hover table-sm" datatable [dtOptions]="dtOptions"  [dtTrigger]="dtTrigger"
+        >  
+          <thead class="thead-light">  
+              <tr>  
+                  <th>Traveller Name</th>  
+                  <th>Source</th>  
+                  <th>Destination</th> 
+                  <th>Start-Date</th> 
+                  <th>End-Date</th>
+                  <th>Action</th>  
+                    
+              </tr>  
+          </thead>  
+          <tbody>  
+               <tr *ngFor="let journey of journeys ">  
+                  <td>{{journey.name}}</td>  
+                  <td>{{journey.source}}</td>  
+                  <td>{{journey.destination}}</td>  
+                  <td>{{journey.startdate|date}}</td>  
+                  <td>{{journey.enddate|date}}</td>  
+                  <td>
+                    <button (click)="updateJourney(journey.id)" class='btn btn-info'  
+                    data-toggle="modal" data-target="#myModal">Update</button>  
+                  </td>  
+                </tr>   
+          </tbody><br>  
+      </table>  
+  </div>  
+</div>   
+ 
+<div class="modal" id="myModal"> 
+ 
+        <div class="modal-dialog"> 
+          <div class="modal-content">  
+                <form [formGroup]="journeyupdateform"  (ngSubmit)="updateJou()">  
+            <!-- Modal Header -->  
+            <div class="modal-header">  
+              <h4 class="modal-title" style="text-align: center">Update Journey</h4>  
+                
+            </div>  
+              
+            <!-- Modal body -->  
+            <div class="modal-body" >  
+                <div [hidden]="isupdated">  
+  
+                    
+                            <div class="form-group">  
+                                <label for="name">Destination</label>  
+                                <input type="text" class="form-control"  formControlName="destination"  >  
+                            </div>  
+                      
+                            <div class="form-group">  
+                                <label for="name">EndDate</label>  
+                                <input type="date" class="form-control" formControlName="enddate" >  
+                            </div>  
+                      
+                                         
+                  </div>    
+                  <div [hidden]="!isupdated">  
+                      <h4>Journey Detail Updated!</h4>  
+                  </div>          
+                      
+            </div>  
+              
+            <!-- Modal footer -->  
+            <div class="modal-footer" >  
+              <button type="submit" class="btn btn-success" [hidden]="isupdated">Update</button>  
+              <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="changeisUpdate()">Close</button>  
+            </div>  
+              
+        </form>  
+          </div>  
+        </div>  
+      </div>  
