@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from './authentication.service';
+
 
 
 
@@ -9,4 +11,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'TravelProject';
+ 
+  constructor(public authenticationService:AuthenticationService){}
+  
+  
+  logout() {
+    this.authenticationService.logout();
+  }
 }

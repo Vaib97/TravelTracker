@@ -1,0 +1,32 @@
+<div class="login-wrapper">
+    <div class="card">
+        <div class="card-body">
+            <form class="form-signup" (ngSubmit)="onSubmit(signUpForm)" #signUpForm="ngForm">
+                <h1 class="h3 mb-3 font-weight-normal">Please sign Up</h1>
+
+                <label for="inputUsername" class="sr-only">SignUp </label>
+                <input type="text" id="inputUsername" class="form-control" name="username" placeholder="username" ngModel
+                    required autofocus>
+
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password"
+                    autocomplete="on" ngModel required>
+
+                <label for="inputPassword" class="sr-only">ConfirmPassword</label>
+                <input type="password" id="inputPassword" class="form-control" name="confirmpassword" placeholder="Confirm Password"
+                autocomplete="on" ngModel required>
+                <div class="alert alert-danger" role="alert" *ngIf="!isPasswordMatch">
+                    Please re-enter the password.
+                </div>
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="!signUpForm.form.valid"
+                >Sign Up</button>
+                
+                
+                
+                   
+              
+            </form>
+        </div>
+    </div>
+</div>

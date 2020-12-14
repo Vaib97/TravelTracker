@@ -15,7 +15,7 @@ export class JourneyListComponent implements OnInit {
 
   JourneyArray: any[] = [];  
   dtOptions: DataTables.Settings = {};  
-  dtTrigger: Subject<any>= new Subject<any>();  
+  //dtTrigger: Subject<any>= new Subject<any>();  
   
   journeys: Journey[]=[];  
   journey : Journey=new Journey();  
@@ -33,7 +33,7 @@ export class JourneyListComponent implements OnInit {
     };     
     this.journeyservice.getJourneyList().subscribe(data =>{  
     this.journeys =data;  
-   this.dtTrigger.next();  
+  // this.dtTrigger.next();  
     })  
   }
   updateJourney(id: number){  

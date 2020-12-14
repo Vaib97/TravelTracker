@@ -1,5 +1,5 @@
 export class Journey {
-    id!:number ;
+    id!: number;
     name!: String ;
     source!: String ;
     destination!: String ;

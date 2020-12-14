@@ -4,18 +4,7 @@
   <div class="col-sm-4" >  
     <div [hidden]="submitted" style="width: 400px;">  
       <form [formGroup]="journeysaveform" #savejourney (ngSubmit)="saveJourney(saveJourney)">  
-          <div class="form-group">  
-              <label for="name">Journey Id</label>  
-              <input type="text" class="form-control"  formControlName="id" data-toggle="tooltip"   
-                 data-placement="right" title="Enter Journey Id" >  
-              <div class="alert alert-danger" *ngIf = "(JourneyId?.touched) && (JourneyId?.invalid)"   
-                style="margin-top: 5px;">  
-                  <span *ngIf="JourneyId?.errors?.required">Journey Id is Required</span>  
-                    <span *ngIf = "JourneyId?.errors?.minlength">   
-                        MinLength Error   
-                    </span>                     
-                </div>  
-          </div>  
+          
           <div class="form-group">  
             <label for="name">Traveller Name</label>  
             <input type="text" class="form-control"  formControlName="name" data-toggle="tooltip"   

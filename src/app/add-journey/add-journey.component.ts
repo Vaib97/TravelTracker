@@ -19,7 +19,6 @@ export class AddJourneyComponent implements OnInit {
   }
   
   journeysaveform=new FormGroup({  
-    id:new FormControl('' , [Validators.required , Validators.minLength(1) ]),
     name:new FormControl('' , [Validators.required , Validators.minLength(5) ] ),  
     source:new FormControl('',[Validators.required]),  
     startdate:new FormControl()  
@@ -27,7 +26,6 @@ export class AddJourneyComponent implements OnInit {
   
   saveJourney(saveJourney: any){  
     this.journey=new Journey();     
-    this.journey.id=this.JourneyId!.value;  
     this.journey.name=this.JourneyName!.value;  
     this.journey.source=this.JourneySource!.value;  
     this.journey.startdate=this.JourneyStartdate!.value;
@@ -42,9 +40,7 @@ export class AddJourneyComponent implements OnInit {
       .subscribe(data => console.log(data), error => console.log(error));  
     this.journey = new Journey();  
   }  
-  get JourneyId(){
-    return this.journeysaveform.get('id');
-  }
+  
   get JourneyName(){  
     return this.journeysaveform.get('name');  
   }  

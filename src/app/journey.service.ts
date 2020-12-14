@@ -9,6 +9,13 @@ export class JourneyService {
   private baseUrl='http://localhost:8080/';
 
   constructor(private http:HttpClient) { }
+   
+  getUser(user:any): Observable<any> {  
+    return this.http.post(`${this.baseUrl}userCheck`,user); 
+  } 
+  Register(user:any): Observable<any> {  
+    return this.http.post(`${this.baseUrl}user`,user); 
+  } 
 
   getJourneyList():Observable<any>{
     return this.http.get(`${this.baseUrl}`+'traveller');
