@@ -7,6 +7,9 @@
                 <label for="inputUsername" class="sr-only">SignUp </label>
                 <input type="text" id="inputUsername" class="form-control" name="username" placeholder="username" ngModel
                     required autofocus>
+                    <div class="alert alert-danger" role="alert" *ngIf="userexist">
+                        Username Already Taken. Please enter a different user name.
+                    </div>
 
                 <label for="inputPassword" class="sr-only">Password</label>
                 <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password"

@@ -7,22 +7,23 @@ import { Observable } from 'rxjs';
 })
 export class JourneyService {
   private baseUrl='http://localhost:8080/';
-
+  username:String='';
   constructor(private http:HttpClient) { }
    
   getUser(user:any): Observable<any> {  
-    return this.http.post(`${this.baseUrl}userCheck`,user); 
+    this.username=user.username;
+    return this.http.post(`${this.baseUrl}login`,user); 
   } 
   Register(user:any): Observable<any> {  
-    return this.http.post(`${this.baseUrl}user`,user); 
+    return this.http.post(`${this.baseUrl}register`,user); 
   } 
 
   getJourneyList():Observable<any>{
-    return this.http.get(`${this.baseUrl}`+'traveller');
+    return this.http.get(`${this.baseUrl}`+this.username+'/traveller');
   }
   
   createJourney(journey:object):Observable<object>{
-    return this.http.post(`${this.baseUrl}`+'traveller', journey);
+    return this.http.post(`${this.baseUrl}`+this.username+'/traveller', journey);
   }
   getJourney(id: number): Observable<Object> {  
     return this.http.get(`${this.baseUrl}id/${id}`);  

@@ -11,6 +11,7 @@ import { UserData } from '../user-data';
 })
 export class SignUpComponent implements OnInit {
   isPasswordMatch:boolean=true;
+  userexist: boolean=false;
   constructor(private journeyservice:JourneyService,private router:Router) { }
 
   ngOnInit(): void {
@@ -19,7 +20,10 @@ export class SignUpComponent implements OnInit {
     if(signUpForm.value.password===signUpForm.value.confirmpassword)
     {const formdata=new UserData(signUpForm.value.username, signUpForm.value.password);
     this.journeyservice.Register(formdata).subscribe(
-      data=> {this.router.navigate([''])},
+      data=> {if(data===false)
+               this.userexist=true;
+        else
+             this.router.navigate([''])},
       error=> console.log(error)
     )
     }
