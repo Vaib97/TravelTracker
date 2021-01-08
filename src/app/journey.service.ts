@@ -22,14 +22,14 @@ export class JourneyService {
     return this.http.get(`${this.baseUrl}`+this.username+'/traveller');
   }
   
-  createJourney(journey:object):Observable<object>{
-    return this.http.post(`${this.baseUrl}`+this.username+'/traveller', journey);
+  createJourney(journey:object):Observable<Object>{
+    return this.http.post(`${`${this.baseUrl}`}add/${this.username}`, journey,{responseType: 'text'});
   }
   getJourney(id: number): Observable<Object> {  
     return this.http.get(`${this.baseUrl}id/${id}`);  
   }  
   updateJourney(id: number, value: any): Observable<Object> {  
-    return this.http.put(`${this.baseUrl}update/${id}`, value);  
+    return this.http.put(`${this.baseUrl}update/${id}`, value, {responseType: 'text'});  
   }  
 
   getJourneyByDestination(destination:String):Observable<object>{

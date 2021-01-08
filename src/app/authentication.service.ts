@@ -9,16 +9,17 @@ import { UserData } from './user-data';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  mockUser: UserData | undefined;
+ 
   isAuthenticated = false;
+  checkCredentials= false;
 
-  constructor(private router: Router,private http:HttpClient,private journeyservice:JourneyService) { }
+  constructor(private router: Router) { }
   
   
   
   
-  authenticate(signInData: UserData): boolean {
-    if (this.checkCredentials(signInData)) {
+  authenticate(): boolean {
+    if (this.checkCredentials) {
       this.isAuthenticated = true;
       this.router.navigate(['home']);
       return true;
@@ -27,11 +28,7 @@ export class AuthenticationService {
     return false;
   }
 
-  private checkCredentials(signInData: UserData): boolean { 
-    if(this.mockUser===undefined)
-    return false;
-    return signInData.username===this.mockUser!.username && signInData.password===this.mockUser!.password;
-  }
+  
 
  
   logout() {
