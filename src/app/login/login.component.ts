@@ -22,16 +22,17 @@ export class LoginComponent implements OnInit {
   onSubmit(signInForm: NgForm) {
     const formdata=new UserData(signInForm.value.username, signInForm.value.password);
     this.journeyservice.getUser(formdata).subscribe(
-      data=> { if(data!=null)
-             this.authenticationService.mockUser=new UserData(data.username, data.password);
+      data=> { 
+         
+             this.authenticationService.checkCredentials=data;
         if (!signInForm.valid) {
           this.isFormValid = true;
           this.areCredentialsInvalid = false;
           return;
         }
         
-        this.checkCredentials(signInForm);
-        console.log(this.authenticationService.mockUser)
+        this.checkCredentials();
+       
         },
       error=> console.log(error)
     )
@@ -39,9 +40,9 @@ export class LoginComponent implements OnInit {
   
   }
 
-  private checkCredentials(signInForm: NgForm) {
-    const signInData = new UserData(signInForm.value.username, signInForm.value.password);
-    if (!this.authenticationService.authenticate(signInData)) {
+  private checkCredentials() {
+    
+    if (!this.authenticationService.authenticate()) {
       this.isFormValid = false;
       this.areCredentialsInvalid = true;
     }
